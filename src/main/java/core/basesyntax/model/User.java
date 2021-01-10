@@ -1,8 +1,8 @@
 package core.basesyntax.model;
 
 public class User {
-    private String userName;
-    private int userAge;
+    private String name;
+    private int age;
 
     public User(String userName, int userAge) {
         this.userName = userName;
