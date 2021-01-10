@@ -6,14 +6,14 @@ import core.basesyntax.model.Bet;
 import java.util.Scanner;
 
 public class ConsoleHandler {
-    private BetDao betDao = new BetDaoImpl();
+    BetDao betDao = new BetDaoImpl();
 
     public void handle() {
         Scanner scanner = new Scanner(System.in);
 
         while (true) {
             String command = scanner.nextLine();
-            if (command.equalsIgnoreCase("q")) {
+            if(command.equalsIgnoreCase("q")) {
                 return;
             }
             Bet bet = null;
@@ -22,13 +22,12 @@ public class ConsoleHandler {
                 int value = Integer.parseInt(betData[0]);
                 double risk = Double.parseDouble(betData[1]);
                 bet = new Bet(value, risk);
-            } catch (NumberFormatException | ArrayIndexOutOfBoundsException e) {
+            } catch (NumberFormatException e) {
                 System.out.println("Помилка. Будь ласка, введіть корректні дані.");
             }
-            if (bet != null) {
-                betDao.add(bet);
-            }
-            System.out.println(bet);
+
+            betDao.add(bet);
+            System.out.println(bet == null ? null : bet.toString());
         }
     }
 }
