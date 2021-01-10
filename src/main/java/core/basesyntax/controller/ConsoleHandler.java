@@ -27,7 +27,7 @@ public class ConsoleHandler {
             }
 
             betDao.add(bet);
-            System.out.println(bet == null ? null : bet.toString());
+            System.out.println(bet);
         }
     }
 }
