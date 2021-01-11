@@ -26,11 +26,11 @@ public class Injector {
                 tempObject = Factory.getBetDao();
             } else if (field.getType().equals(UserDao.class)) {
                 tempObject = Factory.getUserDao();
-                }
+            }
             if (tempObject.getClass().isAnnotationPresent(Dao.class)) {
                 field.set(instance, tempObject);
             } else {
-                throw new AnnotationException("Can't find Annotation in class!");
+                throw new AnnotationException("Can't find Annotation in class!" + tempObject.getClass());
             }
 
         }
